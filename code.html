@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0071e3",
+              "background-light": "#000000", 
+              "background-dark": "#000000",
+              "surface-light": "#1d1d1f", 
+              "surface-dark": "#1d1d1f",
+              "text-light": "#ffffff",
+              "text-dark": "#ffffff",
+              "text-secondary": "#86868b",
+              "card-light": "#1d1d1f",
+              "card-dark": "#1d1d1f",
+            },
+            fontFamily: {
+              display: ["SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+              sans: ["SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              'card': "1.75rem", 
+              'apple-xl': "2.5rem",
+              'squircle': "3rem",
+              'vision': "40px",
+            },
+            boxShadow: {
+                'apple': '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)',
+                'soft-dropdown': '0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.1)',
+                'vision-os': '0 20px 50px rgba(0,0,0,0.5)',
+                'glass': '0 8px 32px 0 rgba(255, 255, 255, 0.05)',
+                '3d-card': '0 30px 60px -10px rgba(0,0,0,0.6)',
+                'spatial-float': '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
+                'glow-white': '0 0 20px rgba(255, 255, 255, 0.1)',
+            },
+          },
+        },
+      };
+    </script>
+<style>
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }
+.global-nav-glass {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+.sub-nav-glass {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+#nav-content {
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.32, 0.72, 0, 1), filter 0.4s ease;
+    transform-origin: center top;
+    will-change: transform, opacity, filter;
+    }.nav-link {
+    position: relative;color: #cccccc; 
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}.vision-menu-container {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.4s step-end;
+}
+.vision-menu-active .vision-menu-container {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s step-start;
+}
+.vision-glass {
+    background: rgba(29, 29, 31, 0.8);
+    backdrop-filter: blur(30px) saturate(190%);
+    -webkit-backdrop-filter: blur(30px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.vision-item {
+    position: relative;
+    padding: 12px 24px;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.vision-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}.vision-item:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(8px);
+    z-index: -1;
+}
+body.menu-open > *:not(#main-nav) {
+    filter: blur(10px);
+    transition: filter 0.5s ease;
+}
+body > *:not(#main-nav) {
+    transition: filter 0.5s ease;
+}.scroll-blur-effect {
+    transition: filter 0.1s linear, transform 0.1s linear;
+}.vision-control-glass {
+    background: rgba(29, 29, 31, 0.6); 
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.vision-control-glass:hover {
+    background: rgba(60, 60, 60, 0.45);
+    transform: scale(1.05);
+}
+.vision-bar-glass {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.progress-thumb {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}.carousel-card {
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease;
+    background: #1d1d1f;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.carousel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+}
+.modal-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #1d1d1f;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+.glass-panel {
+    background: rgba(29, 29, 31, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.vision-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(29, 29, 31, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+.vision-nav-btn:hover {
+    background-color: rgba(60, 60, 60, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+.vision-nav-btn:active {
+    transform: scale(0.95);
+}
+@media (max-width: 768px) {
+    .vision-menu-container {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        top: auto;
+        right: auto;
+        transform: translate(-50%, 20px) scale(0.9);
+        width: 90%;
+        max-width: 320px;
+    }
+    .vision-menu-active .vision-menu-container {
+        transform: translate(-50%, 0) scale(1);
+    }
+}.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}.scene-3d {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+}
+.carousel-3d {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    transform-style: preserve-3d;
+    transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 50; 
+}
+.card-3d-wrapper {
+    position: absolute;
+    width: 320px;height: 440px;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    border-radius: 3rem;transition: filter 0.2s linear;}
+.card-3d-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    border-radius: 3rem;overflow: hidden;
+    background: #1d1d1f;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 2;
+    transform-style: preserve-3d;
+    box-shadow: 0 30px 60px -10px rgba(0,0,0,0.6);
+}.card-3d-face h3, .card-3d-face p {
+    color: white;}.card-3d-face.back {
+    background: #1d1d1f;
+    color: #ffffff; 
+}
+.card-content-inner {
+    transform: translateZ(40px);transition: transform 0.3s ease-out;
+}
+.card-icon-inner {
+    transform: translateZ(60px);transition: transform 0.3s ease-out;
+}
+.card-3d-face.back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+.text-overlay-gradient {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+}
+@media (max-width: 768px) {
+    .scene-3d {
+        perspective: 800px;height: 50vh;
+    }
+    .carousel-3d {
+        width: 180px;height: 260px;}
+    .card-3d-wrapper {
+        width: 220px;
+        height: 300px;
+        border-radius: 2rem;
+    }
+    .card-3d-face {
+        border-radius: 2rem;
+    }.card-3d-face span.material-symbols-outlined {
+        font-size: 2.5rem;margin-bottom: 0.75rem;
+    }
+    .card-3d-face h3 {
+        font-size: 1.25rem;line-height: 1.2;
+    }
+    .card-3d-face p {
+        font-size: 0.75rem;}
+}
+.blur-fade-container {
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity 0.1s linear, filter 0.1s linear;
+}#dynamic-bg-wrapper {background-color: #000000;
+    transition: background-color 0.8s ease;}
+.spatial-card-footer-blur {
+    backdrop-filter: blur(50px) saturate(210%);
+    -webkit-backdrop-filter: blur(50px) saturate(210%);
+    background: linear-gradient(180deg, rgba(29,29,31,0.6) 0%, rgba(40,40,40,0.7) 100%);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    mask-image: linear-gradient(to bottom, black 0%, black 100%);}
+.dark .spatial-card-footer-blur {
+    background: linear-gradient(180deg, rgba(29,29,31,0.6) 0%, rgba(40,40,40,0.7) 100%);
+}
+.spatial-card-shadow {
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1) inset;
+}
+.close-btn-glass {
+    background: rgba(40, 40, 40, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}.carousel-exit {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+.glow-text {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.hero-gradient-overlay {
+    background: linear-gradient(to bottom, transparent 60%, #000000 100%);
+}#hero-card-wrapper {
+    opacity: 0;
+    animation: fadeInHero 0.8s ease-out forwards;
+    z-index: 100;
+}
+@keyframes fadeInHero {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}#carousel-sticky-wrapper {
+    overflow: visible !important; 
+    z-index: 40;
+}
+</style>
+</head>
+<body class="bg-black text-white font-sans antialiased" id="dynamic-bg-wrapper">
+<nav class="absolute top-0 w-full z-[10000] h-[44px] global-nav-glass text-[#cccccc] text-xs font-normal border-b border-transparent group" id="main-nav">
+<div class="max-w-[1024px] mx-auto px-4 h-full relative">
+<div class="flex justify-between md:justify-center items-center h-full w-full relative" id="nav-content">
+<div class="flex-1 md:hidden">
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="nav-link" href="https://instagram.com/65751214">Instagram</a>
+<a class="nav-link" href="https://threads.net/@65751214">Threads</a>
+<a class="nav-link" href="https://snapchat.com/add/k1ng.187">Snapchat</a>
+<a class="nav-link" href="https://tiktok.com/@65751214.v">TikTok</a>
+<a class="nav-link" href="https://twitter.com/65751214v">Twitter</a>
+<a class="nav-link" href="https://discord.com/users/359286466986672129">Discord</a>
+<a class="nav-link" href="https://t.me/k1ng187">Telegram</a>
+<a class="nav-link" href="https://instagram.com/65751214.v">Instagram 2</a>
+</div>
+<div class="absolute right-0 flex items-center gap-4 text-xs text-[#f5f5f7] opacity-90 h-full">
+<button class="outline-none focus:outline-none flex items-center justify-center hover:opacity-100 transition duration-300 h-full px-2" id="menu-trigger">
+<i class="fa-brands fa-instagram text-[20px] md:text-[16px]"></i>
+</button>
+</div>
+<div class="vision-menu-container absolute top-[60px] right-0 md:right-[-20px] z-[10001] w-[220px]" id="vision-menu">
+<div class="vision-glass rounded-[40px] p-3 flex flex-col gap-1">
+<a class="vision-item group" href="https://instagram.com/65751214">
+<i class="fa-brands fa-instagram text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Instagram</span>
+</a>
+<a class="vision-item group" href="https://threads.net/@65751214">
+<i class="fa-brands fa-threads text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Threads</span>
+</a>
+<a class="vision-item group" href="https://snapchat.com/add/k1ng.187">
+<i class="fa-brands fa-snapchat text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Snapchat</span>
+</a>
+<a class="vision-item group" href="https://tiktok.com/@65751214.v">
+<i class="fa-brands fa-tiktok text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>TikTok</span>
+</a>
+<a class="vision-item group" href="https://twitter.com/65751214v">
+<i class="fa-brands fa-twitter text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Twitter</span>
+</a>
+<a class="vision-item group" href="https://discord.com/users/359286466986672129">
+<i class="fa-brands fa-discord text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Discord</span>
+</a>
+<a class="vision-item group" href="https://t.me/k1ng187">
+<i class="fa-brands fa-telegram text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Telegram</span>
+</a>
+<a class="vision-item group" href="https://instagram.com/65751214.v">
+<i class="fa-brands fa-instagram text-xl w-6 text-center opacity-70 group-hover:opacity-100 transition-opacity"></i>
+<span>Instagram 2</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<script>
+    const menuTrigger = document.getElementById('menu-trigger');
+    const body = document.body;
+    const navContent = document.getElementById('nav-content');
+    menuTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // Toggle active class on parent nav to handle state
+        const isMenuOpen = body.classList.contains('menu-open');
+        if (isMenuOpen) {
+            body.classList.remove('menu-open');
+            navContent.classList.remove('vision-menu-active');
+        } else {
+            body.classList.add('menu-open');
+            navContent.classList.add('vision-menu-active');
+        }
+    });
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (body.classList.contains('menu-open') && !e.target.closest('.vision-menu-container') && !e.target.closest('#menu-trigger')) {
+            body.classList.remove('menu-open');
+            navContent.classList.remove('vision-menu-active');
+        }
+    });
+</script>
+<nav class="sticky top-0 z-[9999] sub-nav-glass border-b border-[rgba(255,255,255,0.1)] mt-[44px]">
+<div class="max-w-[1024px] mx-auto px-4 h-[52px] flex justify-between items-center">
+<a class="font-semibold text-[21px] tracking-tight text-white" href="#">My Homepage</a>
+<div class="space-x-6 text-[12px] font-normal">
+<a class="text-white hover:text-white transition-colors cursor-pointer" href="#">Über mich</a>
+<a class="text-[#86868b] hover:text-white transition-colors cursor-pointer" href="#">Kontakt</a>
+</div>
+</div>
+</nav>
+<header class="relative w-full h-[100vh] overflow-hidden -mt-[96px] bg-black">
+<div class="absolute inset-0 w-full h-full scroll-blur-effect" id="hero-video-container">
+<img alt="Hero Image" class="w-full h-full object-cover opacity-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuXeHAbmP2N9lSUxfPrTjh2iZkJkCqayPT7Fqvtlran_v7kcb93Y5R0ZIVq-x7z6bTTAOxL8r93NpGsyvKiZf7nzkfMDHwzqO_8_vDjWsmxEOs7mht6xdcD6NtEDehMg95dRdq0Nwt1DqNtXTmN99WZmsUgahEQFa0oaGmdMAmcs6d7d_XqoAhnM0KFyoTdXKMTpFZwXNtQze5-zKnKliXSHo5oqnKKljaZ36aLyhIKeWBwbdZqFb4fO_6Rr7rFOc9gEsvQp1NbY4"/>
+<div class="absolute inset-0 hero-gradient-overlay"></div>
+</div>
+<div class="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
+<div class="mb-6 flex justify-center opacity-80">
+</div>
+<h1 class="text-4xl md:text-6xl font-semibold max-w-5xl mx-auto leading-tight text-center text-white font-display tracking-tight glow-text">
+            Life is a book.<br/>memories telling the story.
+        </h1>
+</div>
+</header>
+<script>
+    // Hero scroll effect script adapted for video container
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const heroContainer = document.getElementById('hero-video-container');
+        // Only apply effects while hero is in view/near view
+        if(scrolled < window.innerHeight) {
+            // Calculate blur amount (0 to 10px) based on scroll
+            const blurValue = Math.min(scrolled * 0.02, 10);
+            // Calculate scale (1 to 0.95)
+            const scaleValue = Math.max(1 - (scrolled * 0.0001), 0.95);
+            heroContainer.style.filter = `blur(${blurValue}px)`;
+            heroContainer.style.transform = `scale(${scaleValue})`;
+        }
+    });
+</script>
+<section class="py-8 px-4 md:px-0 bg-transparent">
+<div class="max-w-[1024px] mx-auto mb-6 text-left pl-4 md:pl-0 mt-[20px] blur-fade-container" id="editorial-text">
+<h2 class="leading-[1.05] font-display tracking-tight" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -0.02em;">
+<span class="text-white transition-colors">scroll weiter.</span> <span class="text-[#86868b]">Was du liest, meine Worte. Was du siehst, das bin ich.</span>
+</h2>
+</div>
+<div class="w-full">
+<div class="max-w-[1400px] mx-auto relative group">
+<div class="overflow-hidden relative">
+<div class="flex overflow-x-auto no-scrollbar gap-6 px-6 md:px-20 pb-4 snap-x snap-mandatory" id="chapterCarousel">
+<div class="min-w-[300px] md:min-w-[380px] h-[520px] rounded-apple-xl relative snap-center overflow-hidden cursor-pointer carousel-card group/card bg-[#1d1d1f] border border-white/10" onclick="openModal('modal-glaube')">
+<img alt="Mosque at sunset" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbDvX7MWXjuPOeabpf7i1mpMFS0YLQxYDw28QjwUqqnOE2vSYRG2-JDZXb1zj8MiuvWrkuNloKmFD3wAQLY8utwPkWx6a99d85yUCAYygONHDLqvuAFqRfPeer3B2T99GCFZKmaSAkLVspGtmmajbhuUpYc7F58-ZyERhN2lVRQHZuC3oWGFxJWjPQzriSKuDRC8xSBCwrizPkmW-Qj6PkROM3wRVUsUoSTaB1uBwgXbX6Q5lLSwgd9VE95Fzc0F_nPllxlQAQP_4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6 right-6 glass-panel rounded-2xl p-4 flex justify-between items-start border border-white/10">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wider text-white/80 mb-1">Kapitel 01: Perspektive</p>
+<h3 class="text-xl font-bold text-white tracking-tight">Islam</h3>
+</div>
+<svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4C12 4 11 5 9 5C7 5 6 4 6 4C6 4 3 8 3 13C3 17 6 20 8 20H16C18 20 21 17 21 13C21 8 18 4 18 4C18 4 17 5 15 5C13 5 12 4 12 4Z"></path>
+<path d="M12 4V14"></path>
+<path d="M8 20V15"></path>
+<path d="M16 20V15"></path>
+<path d="M3 13C3 13 4 12 6 12C8 12 9 13 9 13"></path>
+<path d="M15 13C15 13 16 12 18 12C20 12 21 13 21 13"></path>
+</svg>
+</div>
+<div class="absolute bottom-8 left-8 right-8 z-10">
+<p class="text-white text-2xl font-semibold leading-tight mb-2 font-display">Deen over Dunya</p>
+<p class="text-white/70 text-sm font-medium">Weiterlesen →</p>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[380px] h-[520px] rounded-apple-xl relative snap-center overflow-hidden cursor-pointer carousel-card group/card bg-[#1d1d1f] border border-white/10" onclick="openModal('modal-gedanken')">
+<img alt="Quiet Library" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXiPDAJvhGUzE8LwOh29PsNQFUAW8gfR5Gbq4y7q9O6RAgTHvbum5gVOQWibOzxRaiH_-HzvAYeVc92v20Jsn3HKpK4nopda5FfIYcEwD-CWsP2aqb50Y4H7gqA8hkAmfgtAH8PJQhimPe0o4BQRo09zNYiqPoG07FDlsjNvlVlH_kBX2U2t_og38PgyHZaX1wtHJtAnXeLT_b82GGh_E6oPfLxXLmp8JISn5JrsywuVCPSQwu9rbjK7w_UzpsMLBWtRaRXXAEqE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6 right-6 glass-panel rounded-2xl p-4 flex justify-between items-start border border-white/10">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wider text-white/80 mb-1">Kapitel 02: Inspiration</p>
+<h3 class="text-xl font-bold text-white tracking-tight">Meine Zukunft</h3>
+</div>
+<span class="material-symbols-outlined text-white/90 text-4xl">all_inclusive</span>
+</div>
+<div class="absolute bottom-8 left-8 right-8 z-10">
+<p class="text-white text-2xl font-semibold leading-tight mb-2 font-display">Was mich zu dem Macht der ich bin</p>
+<p class="text-white/70 text-sm font-medium">Weiterlesen →</p>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[380px] h-[520px] rounded-apple-xl relative snap-center overflow-hidden cursor-pointer carousel-card group/card bg-[#1d1d1f] border border-white/10" onclick="openModal('modal-reise')">
+<img alt="Travel Landscape" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ3MPStTDimb1P1Vj8bTXhiZ1pSSqX_3HxRJ74IOBQsX3fYfzrnyDV6jruazPKt_o2YvPM5iJbVZJmvAfuO4UQY_qwS0UYdwoW8nngx4QibafOgqVwbbyakhVtoWcupC3r8d_mXwuBeo3-s0uMjEcQ6RssSumcG6CwxOpBAJXPXwcRqE87vxpDEKfmkH0Jy0qH7MwM1ACQt7_PXH2sEA4RA4kEH9uPdFSM5obQmSc3zMd9dj6HYNSDR2j3O4Z2tK9aMYqQ6_MePRI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6 right-6 glass-panel rounded-2xl p-4 flex justify-between items-start border border-white/10">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wider text-white/80 mb-1">Kapitel 03: Reise</p>
+<h3 class="text-xl font-bold text-white tracking-tight">Türkei</h3>
+</div>
+<span class="material-symbols-outlined text-white/90 text-4xl">explore</span>
+</div>
+<div class="absolute bottom-8 left-8 right-8 z-10">
+<p class="text-white text-2xl font-semibold leading-tight mb-2 font-display">Meine Reise in die Türkei</p>
+<p class="text-white/70 text-sm font-medium">Weiterlesen →</p>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[380px] h-[520px] bg-[#1d1d1f] rounded-apple-xl relative snap-center overflow-hidden cursor-pointer carousel-card border border-white/10 flex items-center justify-center">
+<div class="text-center p-8">
+<span class="material-symbols-outlined text-[#86868b] text-6xl mb-4">add_circle</span>
+<h3 class="text-xl font-bold text-white mb-2">Bald verfügbar</h3>
+<p class="text-[#86868b] text-sm">Weitere Kapitel sind in Arbeit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden md:flex absolute -bottom-4 right-10 lg:right-20 space-x-4 z-30 translate-y-full">
+<button class="vision-nav-btn" onclick="scrollCarousel(-1)">
+<i class="fa-solid fa-arrow-left text-sm"></i>
+</button>
+<button class="vision-nav-btn" onclick="scrollCarousel(1)">
+<i class="fa-solid fa-arrow-right text-sm"></i>
+</button>
+</div>
+</div>
+</div>
+</section>
+<div class="fixed inset-0 z-[10002] modal-overlay flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8" id="modal-overlay" onclick="closeModal()">
+<div class="relative w-full max-w-5xl h-full md:h-[90vh] bg-[#1d1d1f] rounded-[2rem] overflow-hidden shadow-2xl modal-content flex flex-col md:flex-row border border-white/10" id="modal-content-container" onclick="event.stopPropagation()">
+<button class="absolute top-6 right-6 z-50 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white/20 transition text-white" onclick="closeModal()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+<div class="w-full h-full flex flex-col md:flex-row" id="dynamic-modal-body">
+</div>
+</div>
+</div>
+<script>
+    const carousel = document.getElementById('chapterCarousel');
+    function scrollCarousel(direction) {
+        const scrollAmount = 420; // approximate card width + gap
+        carousel.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    const modalData = {
+        'modal-glaube': {
+            title: 'Islam',
+            subtitle: 'Kapitel 01: Perspektive',
+            image: 'https://images.unsplash.com/photo-1564121211835-e88c852648ab?q=80&w=2070&auto=format&fit=crop',
+            desc: 'In der Stille des Gebets finden wir Antworten auf Fragen, die wir noch gar nicht gestellt haben. Glaube ist nicht das Wissen, dass alles gut wird, sondern das Vertrauen, dass alles einen Sinn hat.'
+        },
+        'modal-gedanken': {
+            title: 'Meine Zukunft',
+            subtitle: 'Kapitel 02: Inspiration',
+            image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop',
+            desc: 'Gedanken sind wie Wolken am Himmel – sie ziehen vorbei, verändern ihre Form und manchmal bringen sie Regen. Doch hinter den dunkelsten Wolken scheint immer die Sonne der Erkenntnis.'
+        },
+        'modal-reise': {
+            title: 'Türkei',
+            subtitle: 'Kapitel 03: Reise',
+            image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop',
+            desc: 'Reisen bedeutet nicht nur, neue Orte zu entdecken, sondern neue Augen zu bekommen. Jeder Schritt auf fremdem Boden ist ein Schritt näher zu uns selbst.'
+        }
+    };
+    function openModal(id) {
+        const data = modalData[id];
+        if(!data) return;
+        const container = document.getElementById('dynamic-modal-body');
+        container.innerHTML = `
+            <div class="w-full md:w-1/2 h-[40vh] md:h-full relative">
+                <img src="${data.image}" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="w-full md:w-1/2 h-auto md:h-full p-8 md:p-16 overflow-y-auto bg-[#1d1d1f] flex flex-col justify-center">
+                <p class="text-xs font-bold uppercase tracking-widest text-[#86868b] mb-4">${data.subtitle}</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white font-display tracking-tight">${data.title}</h2>
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 font-light">
+                    ${data.desc}
+                </p>
+                <button class="self-start px-8 py-3 rounded-full bg-[#0071e3] text-white font-medium hover:bg-[#0077ed] transition">
+                    Kapitel lesen
+                </button>
+            </div>
+        `;
+        const overlay = document.getElementById('modal-overlay');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        const overlay = document.getElementById('modal-overlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+</script>
+<section class="h-[400vh] relative bg-transparent pt-4 pb-[100vh] mt-[200px]" id="carousel-scroll-container">
+<div class="sticky top-0 h-screen w-full flex flex-col justify-center z-[200]" id="carousel-sticky-wrapper" style="overflow: visible;">
+<div class="absolute inset-0 z-0 bg-black" id="carousel-bg"></div>
+<div class="max-w-[1024px] mx-auto px-4 w-full mb-8 text-center z-50 relative opacity-0 transition-opacity duration-1000" id="carousel-header">
+<h2 class="text-3xl font-bold mb-2 text-white" id="carousel-title">Entdecke meine Welt.</h2>
+</div>
+<div class="scene-3d z-50">
+<div class="carousel-3d" id="carousel-3d">
+<div class="card-3d-wrapper z-[100]" id="hero-card-wrapper" style="opacity: 0; animation: fadeInHero 1s ease-out 0.2s forwards;">
+<div class="card-3d-face shadow-3d-card relative" id="hero-card-face">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcCDJLDBUnC2tc0-vllzdCg0-lggxHDl86lW-LBOHXnQRS6uEyFUZ2cCv0LkGl9wxZ9gtTuII9Nz1vHXiRcX0ObuuOtxhURM7YhpyLwnzqN9E290wnvpSCNnqFq2QaIr_zTf8SLYrIAehKpyrPFjgcssScnKLTIW1DY5FKc56GGhCAinq9qsiwXaViAenJTxktXRI764ID4IP7gAieCj5MAlZBMh2mfT1leeZsu6LUbJtiXOJTRjWbuB08-QAcnVM91DHbbXhbMFw"/>
+<div class="absolute inset-0 text-overlay-gradient"></div>
+<div class="card-content-inner absolute bottom-8 left-0 right-0 text-center z-20 transition-all duration-500" id="hero-card-content">
+<h3 class="font-display font-semibold text-3xl mb-1 text-white tracking-tight" id="card-title-0">Islam</h3>
+<p class="text-sm text-white/80 font-medium" id="card-desc-0">Deen over Dunya</p>
+</div>
+</div>
+<div class="card-3d-face back shadow-3d-card flex items-center justify-center bg-[#1d1d1f]">
+<span class="material-symbols-outlined text-4xl text-[#86868b]">mosque</span>
+</div>
+</div>
+<div class="card-3d-wrapper">
+<div class="card-3d-face shadow-3d-card relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwyY1rNU8Ef0FupHZrM9nlLOOyzAoYAjUxCqAPUAjoSsyZZqLbGbAn5SWl2TX2bCNYquNV7j0XrS0wNlRmiU07HWFfs1rRkGHygoeKvIpYvBFFOThnHGTVwgSHnECg_5bZg819hER8Ah3zh9vorfnaLBxqyQ16OjPs4TPmjF9qTIsTO-Hssx6BTjusf_cqpjXX7Xwc-WgRZ6QUYC8z0Q4R6LS7SrlZskaPRty9FSg9DKXqUGg2kdDsxMeQJlv9NdQOWKhgCoQl0Dw"/>
+<div class="absolute inset-0 text-overlay-gradient"></div>
+<div class="card-content-inner absolute bottom-8 left-0 right-0 text-center z-20">
+<h3 class="font-display font-semibold text-3xl mb-1 text-white tracking-tight" id="card-title-1">Inspiration</h3>
+<p class="text-sm text-white/80 font-medium" id="card-desc-1">Was mich zu dem macht...</p>
+</div>
+</div>
+<div class="card-3d-face back shadow-3d-card flex items-center justify-center bg-[#1d1d1f]">
+<span class="material-symbols-outlined text-4xl text-[#86868b]">lightbulb</span>
+</div>
+</div>
+<div class="card-3d-wrapper">
+<div class="card-3d-face shadow-3d-card relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC56Usgbod-eNByCMSsgc55Bg0akDl9UH3Idet1LXBJMtLXfB6P0q39kD3TxBv39U9HmnTMJ1SNQ5mfki807FjdBkKLDvm3CBXNK8PiEPAttFrkZlW7SzgwYkM0B7P6_3zlr6siN7Y0_7xfJjmGynaKZIOvmP4MDj9za2xzBuYj16yzEX1AZcnL6rRHafbjNf-1vIjWKcCbc--LDHYS494v3kbqN4dDo_cKM8Mj3_9Etj1hRCpaxRiOioJLNC5ogjP6bakL0mNqtuA"/>
+<div class="absolute inset-0 text-overlay-gradient"></div>
+<div class="card-content-inner absolute bottom-8 left-0 right-0 text-center z-20">
+<h3 class="font-display font-semibold text-3xl mb-1 text-white tracking-tight" id="card-title-2">Reise</h3>
+<p class="text-sm text-white/80 font-medium" id="card-desc-2">Türkei</p>
+</div>
+</div>
+<div class="card-3d-face back shadow-3d-card flex items-center justify-center bg-[#1d1d1f]">
+<span class="material-symbols-outlined text-4xl text-[#86868b]">flight</span>
+</div>
+</div>
+<div class="card-3d-wrapper">
+<div class="card-3d-face shadow-3d-card relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD32UllfZVyBmawMgcz74zqdvKCc52fnJIo0APxHLqk9CQxFW8pTc_Ib9bc6hTT7WZhW45PxfV-qwwGERNQJgb9zxplXFEc_tisUwssPLN7szldMMTAh_SToE3eAfiMT1tDjv19pBXY1kBvp-FxHl2BelAq-iNk51kA-SJ1iEDHlnPJKK_ztlgXtpA4CDWOzn0cBp2v0BLFRuN_dtT3TBB3y9Pg9B_NgOxgenQjmmBCCin5LHg2ga6-vVe0WGwMkrvcMaFK647OnJM"/>
+<div class="absolute inset-0 text-overlay-gradient"></div>
+<div class="card-content-inner absolute bottom-8 left-0 right-0 text-center z-20">
+<h3 class="font-display font-semibold text-3xl mb-1 text-white tracking-tight" id="card-title-3">Zukunft</h3>
+<p class="text-sm text-white/80 font-medium" id="card-desc-3">Meine Träume</p>
+</div>
+</div>
+<div class="card-3d-face back shadow-3d-card flex items-center justify-center bg-[#1d1d1f]">
+<span class="material-symbols-outlined text-4xl text-[#86868b]">schedule</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="w-full h-[5vh] bg-transparent"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- 1. BLUR FADE ANIMATION LOGIC ---
+        const editorialText = document.getElementById('editorial-text');
+        const bgWrapper = document.getElementById('dynamic-bg-wrapper');
+        const stickyWrapper = document.getElementById('carousel-sticky-wrapper');
+        const carouselHeader = document.getElementById('carousel-header');
+        const carouselBg = document.getElementById('carousel-bg');
+        // Setup initial state for scroll reveals
+        const revealElements = document.querySelectorAll('h2, h3, p, .group');
+        revealElements.forEach(el => {
+            el.classList.add('scroll-reveal');
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        function updateBlurFade() {
+            const rect = editorialText.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            // Define start and end points relative to viewport height
+            // Element starts animating when it enters bottom 20% of screen
+            // Finishes when it reaches 60% from top
+            const startFade = windowHeight * 0.9; 
+            const endFade = windowHeight * 0.4;
+            const elementCenter = rect.top + (rect.height / 2);
+            let progress = 0;
+            if (elementCenter > startFade) {
+                progress = 0;
+            } else if (elementCenter < endFade) {
+                progress = 1;
+            } else {
+                // Linear interpolation between start and end
+                progress = 1 - ((elementCenter - endFade) / (startFade - endFade));
+            }
+            // Map progress (0 to 1) to blur (20px to 0px) and opacity (0 to 1)
+            const blurAmount = 20 * (1 - progress);
+            const opacityAmount = progress;
+            const translateY = 20 * (1 - progress); // Subtle lift effect
+            editorialText.style.filter = `blur(${blurAmount}px)`;
+            editorialText.style.opacity = opacityAmount;
+            editorialText.style.transform = `translateY(${translateY}px)`;
+        }
+        // Initial call
+        updateBlurFade();
+        // --- 2. 3D CAROUSEL LOGIC ---
+        const scrollContainer = document.getElementById('carousel-scroll-container');
+        const carousel3d = document.getElementById('carousel-3d');
+        const cards = document.querySelectorAll('.card-3d-wrapper');
+        const heroCardWrapper = document.getElementById('hero-card-wrapper');
+        const heroCardContent = document.getElementById('hero-card-content');
+        const numberOfCards = cards.length;
+        // Configuration
+        const megaScaleStart = 2.0; // Reduced from 2.5 to better fit initial massive state
+        const megaScaleEnd = 1.0;   // End scale (normal carousel card size)
+        const megaSectionPercent = 0.35; // Portion of scroll dedicated to "scaling down"
+        const initialTranslateZ = 700; // Increased Z translation for massive feel
+        let currentRotation = 0;
+        let targetRotation = 0;
+        let currentMegaScale = megaScaleStart;
+        let targetMegaScale = megaScaleStart;
+        // Variables for smooth exit transition
+        let exitOpacity = 1;
+        let exitScale = 1;
+        function getRadius() {
+            // Smaller radius for mobile (width < 768px), larger for desktop
+            return window.innerWidth < 768 ? 200 : 420;
+        }
+        // Standard card dimensions for calculation
+        const cardWidth = window.innerWidth < 768 ? 220 : 320;
+        const cardHeight = window.innerWidth < 768 ? 300 : 440;
+        function lerp(start, end, factor) {
+            return start + (end - start) * factor;
+        }
+        // Function to position other cards normally in circle
+        function positionNormalCards(scaleProgress) {
+            const currentRadius = getRadius();
+            // Only position cards 1, 2, 3... (skip 0, the hero card, initially)
+            for (let i = 1; i < numberOfCards; i++) {
+                const card = cards[i];
+                const angle = (i / numberOfCards) * 360;
+                // These cards fade in as scaleProgress goes from 0 to 1
+                const opacity = Math.max(0, (scaleProgress - 0.5) * 2); 
+                card.style.opacity = opacity;
+                card.style.transform = `rotateY(${angle}deg) translateZ(${currentRadius}px) rotateZ(0)`;
+            }
+        }
+        function updateCarousel() {
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const containerHeight = scrollContainer.offsetHeight;
+            const windowHeight = window.innerHeight;
+            // Calculations relative to the document
+            const scrollContainerTop = scrollContainer.offsetTop;
+            // 0.0 to 1.0 progress through the whole section
+            const sectionTotalScroll = containerHeight - windowHeight;
+            const currentScrollInSection = Math.max(0, window.scrollY - scrollContainerTop);
+            const sectionProgress = Math.min(Math.max(currentScrollInSection / sectionTotalScroll, 0), 1);
+            // --- MEGA-MORPHISM LOGIC ---
+            // Phase 1: Scaling down (0% to 35% of section)
+            let scaleProgress = 0; // 0 = start (big), 1 = end (normal)
+            if (sectionProgress <= megaSectionPercent) {
+                // Normalize progress within the first 35%
+                scaleProgress = sectionProgress / megaSectionPercent; 
+                // Easing for scale (high-end spring feeling via cubic-bezier approximation)
+                // Using ease-out for a "heavy" start that settles smoothly
+                const easedScale = 1 - Math.pow(1 - scaleProgress, 4); // More dramatic easing
+                targetMegaScale = lerp(megaScaleStart, megaScaleEnd, easedScale);
+                // Show/Hide Header
+                if (scaleProgress > 0.8) {
+                    carouselHeader.style.opacity = (scaleProgress - 0.8) * 5;
+                } else {
+                    carouselHeader.style.opacity = 0;
+                }
+            } else {
+                scaleProgress = 1;
+                targetMegaScale = megaScaleEnd;
+                carouselHeader.style.opacity = 1;
+            }
+            // Phase 2: Rotation (Starts after scale down, from 35% to 80%)
+            // We want rotation to start smoothly as scaling finishes
+            let rotateProgress = 0;
+            if (sectionProgress > megaSectionPercent) {
+                // Remap 0.35 -> 1.0 to 0.0 -> 1.0 range
+                const rotateSectionLength = 1.0 - megaSectionPercent;
+                rotateProgress = (sectionProgress - megaSectionPercent) / rotateSectionLength;
+            }
+            // --- ROTATION CALCULATION ---
+            // Rotation continues throughout the second phase
+            targetRotation = rotateProgress * -360;
+            // --- HERO CARD TRANSFORM ---
+            // Hero card (index 0) behaves differently
+            const currentRadius = getRadius();
+            // At scaleProgress = 0: It is centered, scale 2.5, translateZ 0 (relative to camera)
+            // At scaleProgress = 1: It is at rotateY(0) translateZ(radius), scale 1
+            // We need to manually construct the transform for the hero card during transition
+            if (scaleProgress < 1) {
+                // Interpolate Z position from "close to camera" to "on the carousel ring"
+                const currentZ = lerp(initialTranslateZ, currentRadius, scaleProgress); // Start from 700px
+                // Scale factor combines physical scale and perspective scaling
+                // As Z decreases (moves away), we compensate less with CSS scale if we want it to shrink naturally?
+                // Actually, moving away shrinks it. User wants it massive then shrinking.
+                // Moving from 700Z to ~400Z moves it away from camera (camera is at ~1200Z perspective, but element is at 0)
+                // Wait, translateZ(positive) moves towards camera.
+                // So 700Z is VERY close. 420Z is moderately close.
+                // So moving from 700 -> 420 means moving AWAY from camera -> naturally getting smaller.
+                // We add a subtle scale multiplier to enhance the effect or manage the size precisely.
+                // Enhance the scale slightly to ensure it fills viewport at start
+                const visualScale = lerp(1.5, 1, scaleProgress); 
+                 heroCardWrapper.style.transform = `rotateY(0deg) translateZ(${currentZ}px) scale(${visualScale})`; 
+                 heroCardWrapper.style.zIndex = 100; // Keep on top
+                 // Ensure opacity is 1 during scaling logic if not handled by CSS animation
+                 heroCardWrapper.style.opacity = 1;
+                 // Smooth fade in as it enters
+                 const entryOpacity = Math.min(sectionProgress * 10, 1);
+                 heroCardWrapper.style.opacity = entryOpacity;
+                 // Fade out text content slightly when huge if needed, or keeping it impactful
+                 // Keeping text subtle during big phase
+                 if(scaleProgress < 0.2) {
+                     heroCardContent.style.opacity = '1';
+                     heroCardContent.style.transform = 'scale(1.1) translateY(20px)';
+                     // Increase shadow for depth
+                     heroCardWrapper.style.boxShadow = '0 50px 100px -20px rgba(0,0,0,0.9)';
+                 } else {
+                     heroCardContent.style.opacity = '1';
+                     heroCardContent.style.transform = 'scale(1) translateY(0)';
+                     heroCardWrapper.style.boxShadow = '';
+                 }
+            } else {
+                // Once phase 1 is done, it acts like a normal card in the carousel
+                // But we need to account for the container rotation
+                // The container rotates, so the card just sits at its slot (Angle 0)
+                heroCardWrapper.style.transform = `rotateY(0deg) translateZ(${currentRadius}px) rotateZ(0)`;
+                heroCardWrapper.style.zIndex = 'auto';
+            }
+            // Position other cards (they fade in)
+            positionNormalCards(scaleProgress);
+            // --- FADE-OUT & EXIT LOGIC ---
+            if (sectionProgress >= 0.95) {
+                stickyWrapper.classList.add('carousel-exit');
+            } else {
+                stickyWrapper.classList.remove('carousel-exit');
+                if (sectionProgress > 0.85) {
+                    const fadeProgress = (sectionProgress - 0.85) / 0.1; 
+                    exitOpacity = 1 - fadeProgress;
+                    exitScale = 1 - (fadeProgress * 0.1); 
+                } else {
+                    exitOpacity = 1;
+                    exitScale = 1;
+                }
+                exitOpacity = Math.max(0, Math.min(1, exitOpacity));
+                exitScale = Math.max(0.9, Math.min(1, exitScale));
+                // Apply global fade to wrapper
+                stickyWrapper.style.opacity = exitOpacity;
+                // For the scale down effect on exit, we apply it to the scene or wrapper
+                // applying to stickyWrapper might conflict with sticky behavior in some browsers, 
+                // but usually fine with scale.
+                // However, let's keep the scene scale separate from the "mega" scale.
+                // We are not scaling the wrapper for "Mega". We are moving the card in 3D space.
+                // So exitScale applies to the whole container.
+                stickyWrapper.style.transform = `scale(${exitScale})`;
+            }
+        }
+        // Animation Loop for Smooth Physics
+        function animate() {
+            // Spring physics for rotation
+            // We want a "heavy" feel, so lower lerp factor
+            let rotDiff = targetRotation - currentRotation;
+            currentRotation += rotDiff * 0.05; // 0.05 is heavy/smooth
+            // Apply rotation to the entire carousel container
+            // NOTE: The carousel container rotates, carrying all cards (which are pinned to it)
+            // But during Phase 1 (Mega), we want the Hero card to stay centered while 'falling' back.
+            // If we rotate the container during Phase 1, the hero card spins away.
+            // So logic: Rotation only visually affects scene in Phase 2?
+            // Yes, targetRotation is 0 during Phase 1.
+            carousel3d.style.transform = `rotateY(${currentRotation}deg)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+        // Global Listeners
+        window.addEventListener('scroll', () => {
+            updateBlurFade();
+            updateCarousel();
+        }, { passive: true });
+        window.addEventListener('resize', () => {
+             updateBlurFade();
+             updateCarousel();
+        });
+        updateCarousel();
+    });
+</script>
+<section class="py-8 bg-black relative z-20 -mt-[40vh]">
+<div class="max-w-[1024px] mx-auto px-4">
+<h2 class="text-3xl md:text-5xl font-bold mb-8 max-w-2xl text-white">Erlebe, wie barrierefreies Design den Unterschied macht.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="group relative rounded-vision h-[500px] cursor-pointer shadow-spatial-float bg-[#1d1d1f] overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-white/10">
+<div class="relative w-full h-[65%] overflow-hidden bg-[#2d2d2f]">
+<img alt="Students learning" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC9lckph2c2SdkkjKb8hzBZviXvayxihp5mi0PDHN7Z7EGT5OVfZwIl9Pro2nP4idKbWcVKhBa8WC5psnI5wBanXtNs4Eq1yype2S1AAYdRF45O8mBQWYpsJWG3Kjx4WI4ZvWzRofKYo9LMQRzkqHxxWszJXHQfGEFN_NWHXXjznm7V20pVeB27OIKWl87nxo08az3OOzbVAXdS-qTBwNr1UrNrvgnFeRizUDeKl5nQfAjPVIsuz3LX1oMLAp2zWQy10SlzMoKpEQ"/>
+<div class="absolute top-5 right-5 w-8 h-8 rounded-full close-btn-glass flex items-center justify-center z-10 transition-transform duration-300 hover:scale-110 cursor-pointer">
+<span class="material-symbols-outlined text-white/80 text-sm font-bold">close</span>
+</div>
+</div>
+<div class="relative h-[35%] w-full spatial-card-footer-blur border-t border-white/10 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-bold text-white mb-1 font-display">Entwickelt für alle</h3>
+<p class="text-sm text-[#86868b] font-medium">Dokumentation über Lernen</p>
+</div>
+<button class="bg-[#0071e3] hover:bg-[#0077ed] text-white px-5 py-1.5 rounded-full text-sm font-semibold transition-colors shadow-lg shadow-[#0071e3]/20">
+                    Open
+                </button>
+</div>
+<div class="border-t border-white/10 pt-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+<i class="fa-brands fa-apple text-white/70 text-sm"></i>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-[#86868b] uppercase font-bold tracking-wider">Powered by</span>
+<span class="text-xs font-semibold text-white">Apple TV+</span>
+</div>
+</div>
+<div class="flex items-center text-xs text-[#86868b] font-medium">
+<i class="fa-brands fa-app-store text-sm mr-1"></i> App Store <i class="fa-solid fa-chevron-right text-[8px] ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative rounded-vision h-[500px] cursor-pointer shadow-spatial-float bg-[#1d1d1f] overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-white/10">
+<div class="relative w-full h-[65%] overflow-hidden bg-[#2d2d2f]">
+<img alt="Sign language user" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfG2dOU5ezsI2rZBXqBL5gsVgfSqqA6ubqtD8ZT3W1JX3Y5EHGYgsCMfAY70F5XEPb4-WrGnR1gljoLB_2u3vWNnjCZ99xe0DGukZ7KYEYWxazOh013GUgbHqgEw5Z9-4WwQIbyyOU4dyyuoWY6eNn_Yd-z_ImmnVepF1DdTUnuA-gko3zQMT7OAKQA7w8mPVQUzjVfUuNnMMo0Y86MwtfX6w4MQd5dIormTLU3UogvAIE6MbADqiq91kFbVyqm1gO8UkrH58K9no"/>
+<div class="absolute top-5 right-5 w-8 h-8 rounded-full close-btn-glass flex items-center justify-center z-10 transition-transform duration-300 hover:scale-110 cursor-pointer">
+<span class="material-symbols-outlined text-white/80 text-sm font-bold">close</span>
+</div>
+</div>
+<div class="relative h-[35%] w-full spatial-card-footer-blur border-t border-white/10 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-bold text-white mb-1 font-display">Deaf Professionals</h3>
+<p class="text-sm text-[#86868b] font-medium">Ein Blick hinter die Kulissen</p>
+</div>
+<button class="bg-[#0071e3] hover:bg-[#0077ed] text-white px-5 py-1.5 rounded-full text-sm font-semibold transition-colors shadow-lg shadow-[#0071e3]/20">
+                    Open
+                </button>
+</div>
+<div class="border-t border-white/10 pt-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+<i class="fa-brands fa-apple text-white/70 text-sm"></i>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-[#86868b] uppercase font-bold tracking-wider">Powered by</span>
+<span class="text-xs font-semibold text-white">Apple TV+</span>
+</div>
+</div>
+<div class="flex items-center text-xs text-[#86868b] font-medium">
+<i class="fa-brands fa-app-store text-sm mr-1"></i> App Store <i class="fa-solid fa-chevron-right text-[8px] ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-end space-x-4 mt-8">
+<button class="w-10 h-10 rounded-full bg-[#1d1d1f] flex items-center justify-center text-[#86868b] hover:bg-[#2d2d2f] hover:text-white transition shadow-sm border border-white/10">
+<i class="fa-solid fa-chevron-left text-xs"></i>
+</button>
+<button class="w-10 h-10 rounded-full bg-[#1d1d1f] flex items-center justify-center text-[#86868b] hover:bg-[#2d2d2f] hover:text-white transition shadow-sm border border-white/10">
+<i class="fa-solid fa-chevron-right text-xs"></i>
+</button>
+</div>
+</div>
+</section>
+<section class="py-16 bg-black">
+<div class="max-w-[1024px] mx-auto px-4">
+<h2 class="text-3xl font-bold mb-8 text-white">Mehr von Apple zum Thema Barrierefreiheit.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0AQ-AcEqJQ8pFff8Q6D_VO1pbhDRMev_VhTq1jYH3--GeDIQ7WS96KvtgGQjz9ht5z_JQ4aXm-s2fY_4Jn2Gr0CtuTVwbhQW86MYfdhXO5L770LHweDQr3EfhRHphP0SE5PGkBvBSG427F_gL_EgS9WOB0wKBJbvwYBEW7H2oGY5LY4XQ_OUEltoAKj5qbEuQyH4oq8DSdhgOQpbl6X65m5hHneNcKzEhNbby9xAnPDYplZdkrF5aWGltNF53HVf5kzEd129caeQ"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Pressemeldung</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">Apple macht das iPhone Erlebnis mit iOS 26 noch besser</h4>
+<p class="text-xs text-[#86868b]">9. Juni 2025</p>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Y1xNg-XjcmWKPI7mTvH856QvGimlXPPJhAT3mZ74p_RWbQllyzwiXCj5UxXgW6nq8zDUc3SZ43ndpTgJkT4NaiqFquJuozGcG3hRi-_cBLJ3Z79zZaFE02MVPrHZZZg1Kb4FgmyySb_1LJl2peyXFsZE6gXRWn20O_Mr3iedSynB-hY5UyFWFuDzpgw0v2jGXRcJEkFY2Ue48-G4WHNRcBfsk50Quv7ONKBxzKx1_23fmyAYSwFhTqKulCiaUqBTgdiyJ8MLHGc"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Pressemeldung</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">Apple stellt neue Bedienungshilfen vor</h4>
+<p class="text-xs text-[#86868b]">13. Mai 2025</p>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx2BYSz3_o__4kbCJSjP6guwlb1jaT8OrUHxxpGMKFeTE1cvyucrnd51NoAsc4zTy7po1_XUhat2-tfTJ8_LvBXg6AcMYPbZSm187wZOFHdUDDzNF6Fj7eqniRcm5c3P8zQ_0ZdH6r7Vtz7HGuejV5IECgVdJ5CIw7RO6b50-qyCR_3w6GJIlG2zlWVNko-Y0KYKLNvZh4164BsGCUV7D2j14VCGH8pKlzyKF0G1x6wjt1mJiYN2BRZVmHjEHS6jmngWz49seB37A"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Update</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">Wie Apple ein Erlebnis für Hörgesundheit entwickelt hat</h4>
+<p class="text-xs text-[#86868b]">28. Oktober 2024</p>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEuc3w5JG21rPVeBPzPD6X10WuRVjpST9euyXsmbJ172nXwIAzCV3WyKcwjkovqZbGOuXG0BTYoZlatWqkDp095FgOVhhbEkziK1vaMO-axKnb_k9ARRbpEFcxxuA7aso2DIvBNf44SkhkpXy1j3AIOqwkzLlF3mrRSDslgGfO1nUemfSjSyiCqsnBtY7lmicss531wkmudaH_tqLaJBv7xozGHA_eFH2SC4u1pOWfDVB1gsLAWzkwFl0C5eQ0FG9qbRpbUDQ4WSs"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Update</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">Neue Features kommen im Herbst für die Apple Services</h4>
+<p class="text-xs text-[#86868b]">11. Juni 2024</p>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAELEJ7QqajvPAuboRB19pgcEPP0G_oeFIrIgRUTbytSRhHzrFJ5ZxX-xpBSIT1uM3YtxsSLT2OuY2mcSk6hQJHioP3rl1151JQxEH2KxFXTJGxZY8rGOvVoChVHErDJTatIe1g-9A_3NGNQ1UYmTt02k-Ivyj-FZw51NUdLhA58lJrULGMZqM-ACNNMAy07yuYeJT-y2m9wES0LK0goB0n91fpr8OH6pFlYQhdSdraKxd7Cpto1s-kU7V7bvoQiVEQrLlCamaCsv0"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Pressemeldung</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">iOS 18 macht das iPhone intelligenter als je zuvor</h4>
+<p class="text-xs text-[#86868b]">10. Juni 2024</p>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-24 h-16 bg-[#1d1d1f] rounded overflow-hidden flex-shrink-0 border border-white/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB0lrjUMliR4gslyiNd-uqKGDodT9iH7pgiBKc-3dPDLiqi-EZuUZM6KRBrjPuxmzeTuZ2HC2F6d3raJrDJ6kGPpYK9oqMsbGAFDK46xK20LVQXlHCs_EqzClwOlj8SWBU2OV1N_QbLPyE5gaKCckkIIoMbqITA6vb3AcBUpieB1M-o1tsDDXvfdVV878VVd1y0cK38UTpHgcz1AjQdi6Hv36aKacf09fDe7ooOwA_Tf6DXU3Ue2DjC3lPxMGzEiqLb2Z3Af7cJnk"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-wide text-[#86868b] mb-1">Pressemeldung</p>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-[#0071e3] transition">iPadOS 18 kommt mit leistungsstarken intelligenten Funktionen und Apps speziell für den Apple Pencil</h4>
+<p class="text-xs text-[#86868b]">10. Juni 2024</p>
+</div>
+</a>
+</div>
+<div class="mt-10 text-center">
+<button class="border border-[#86868b] rounded-full px-6 py-2 text-sm font-medium text-white hover:border-white hover:bg-white/10 transition">
+                    Mehr anzeigen <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+</button>
+</div>
+</div>
+</section>
+<section class="py-16 bg-black">
+<div class="max-w-[1024px] mx-auto px-4">
+<h2 class="text-3xl font-bold mb-8 text-white">Unsere Werte geben den Weg vor.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-[#1d1d1f] rounded-card p-6 border border-white/10">
+<span class="material-symbols-outlined text-3xl mb-3 text-white">school</span>
+<h3 class="text-xl font-bold mb-2 text-white">Bildung</h3>
+<p class="text-sm text-[#86868b] mb-4 leading-relaxed">Wir helfen Schüler:innen, Studierenden und Lehrkräften zu lernen, kreativ zu werden und ihren Erfolg selbst zu definieren.</p>
+<a class="text-[#0071e3] text-sm hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="bg-[#1d1d1f] rounded-card p-6 border border-white/10">
+<span class="material-symbols-outlined text-3xl mb-3 text-white">public</span>
+<h3 class="text-xl font-bold mb-2 text-white">Umwelt</h3>
+<p class="text-sm text-[#86868b] mb-4 leading-relaxed">Wir sind entschlossen, unsere Netto-Emissionen für unseren gesamten CO₂ Fußabdruck bis 2030 auf null zu senken.</p>
+<a class="text-[#0071e3] text-sm hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="bg-[#1d1d1f] rounded-card p-6 border border-white/10">
+<span class="material-symbols-outlined text-3xl mb-3 text-white">lock</span>
+<h3 class="text-xl font-bold mb-2 text-white">Datenschutz</h3>
+<p class="text-sm text-[#86868b] mb-4 leading-relaxed">Wir entwickeln jedes Produkt und jeden Service so, dass deine Daten sicher und geschützt bleiben.</p>
+<a class="text-[#0071e3] text-sm hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="bg-[#1d1d1f] rounded-card p-6 border border-white/10">
+<span class="material-symbols-outlined text-3xl mb-3 text-white">autorenew</span>
+<h3 class="text-xl font-bold mb-2 text-white">Innovationen in der Lieferkette</h3>
+<p class="text-sm text-[#86868b] mb-4 leading-relaxed">Sichere, respektvolle und unterstützende Arbeitsplätze für alle bereitzustellen, hat für uns Priorität.</p>
+<a class="text-[#0071e3] text-sm hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12 bg-[#1d1d1f] border-t border-white/10">
+<div class="max-w-[1024px] mx-auto px-4">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-white">chat_bubble</span>
+<h4 class="font-semibold text-sm mb-1 text-white">Kontakt</h4>
+<p class="text-xs text-[#86868b] mb-2 max-w-[180px]">Den Apple Support für Bedienungshilfen erreichst du über Telefon oder Chat.</p>
+<a class="text-[#0071e3] text-xs hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-white">sign_language</span>
+<h4 class="font-semibold text-sm mb-1 text-white">SignChat</h4>
+<p class="text-xs text-[#86868b] mb-2 max-w-[180px]">Hol dir persönliche Unterstützung von DGS Dolmetscher:innen für eine Einkaufsberatung und mehr.</p>
+<a class="text-[#0071e3] text-xs hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-white">gavel</span>
+<h4 class="font-semibold text-sm mb-1 text-white">Regulatorische Informationen</h4>
+<p class="text-xs text-[#86868b] mb-2 max-w-[180px]">Infos zu Voluntary Product Accessibility Templates (VPATs), dem European Accessibility Act und mehr.</p>
+<a class="text-[#0071e3] text-xs hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-2 text-white">headphones</span>
+<h4 class="font-semibold text-sm mb-1 text-white">Media Services</h4>
+<p class="text-xs text-[#86868b] mb-2 max-w-[180px]">Apple Media Services unterstützen eine Vielzahl von Bedienungshilfen.</p>
+<a class="text-[#0071e3] text-xs hover:underline" href="#">Weitere Infos &gt;</a>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-[#1d1d1f] pt-8 pb-12 text-[11px] text-[#86868b]">
+<div class="max-w-[1024px] mx-auto px-4">
+<div class="space-y-2 border-b border-white/10 pb-6 mb-6">
+<p>1. Live Mithören erfordert kompatible „Made for iPhone“ Hörgeräte und unterstützt iPhone 4s und neuer, iPad Pro, iPad (4. Generation und neuer), iPad Air und iPad mini. Um Live Mithören mit AirPods, AirPods Pro, AirPods Max oder Powerbeats Pro zu verwenden, erfordert das iOS oder iPadOS Gerät iOS 14.3 oder neuer oder iPadOS 14.3 oder neuer.</p>
+<p>2. Die Hörtest- und Hörhilfefunktionen werden auf AirPods Pro 2 und neuer mit der neuesten Firmware unterstützt, die mit einem kompatiblen iPhone oder iPad mit iOS 18 oder iPadOS 18 und neuer gekoppelt sind. Sie sind für Personen ab 18 Jahren bestimmt. Die Hörhilfefunktion wird auch auf einem kompatiblen Mac mit macOS Sequoia und neuer unterstützt. Sie ist für Personen mit leicht bis mäßig eingeschränktem Hörvermögen bestimmt. Einige Features sind u. U. nicht in allen Regionen oder Sprachen verfügbar. <a class="underline text-gray-300" href="#">Vollständige Liste ansehen.</a></p>
+<p>Angebote und Verkauf von Artikeln in Apple Retail Stores in Deutschland erfolgen durch die Apple Retail Germany B.V. &amp; Co. KG. <br/> Angebot und Verkauf von Artikeln über den Apple Online Store in Deutschland erfolgen durch Apple Distribution International Ltd.</p>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<i class="fa-brands fa-apple text-base text-gray-200"></i>
+<i class="fa-solid fa-chevron-right text-[8px]"></i>
+<span class="text-gray-200">Barrierefreiheit</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+<div>
+<h4 class="font-semibold text-white mb-2">Einkaufen und mehr</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Store</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Mac</a></li>
+<li><a class="hover:underline hover:text-white" href="#">iPad</a></li>
+<li><a class="hover:underline hover:text-white" href="#">iPhone</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Watch</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Vision</a></li>
+<li><a class="hover:underline hover:text-white" href="#">AirPods</a></li>
+<li><a class="hover:underline hover:text-white" href="#">TV &amp; Home</a></li>
+<li><a class="hover:underline hover:text-white" href="#">AirTag</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Zubehör</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Geschenkkarten</a></li>
+</ul>
+<h4 class="font-semibold text-white mt-4 mb-2">Apple Wallet</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Apple Pay</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-white mb-2">Account</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Deinen Apple Account verwalten</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Store Account</a></li>
+<li><a class="hover:underline hover:text-white" href="#">iCloud.com</a></li>
+</ul>
+<h4 class="font-semibold text-white mt-4 mb-2">Entertainment</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Apple One</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple TV+</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Music</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Arcade</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Fitness+</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Podcasts</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Books</a></li>
+<li><a class="hover:underline hover:text-white" href="#">App Store</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-white mb-2">Apple Store</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Store finden</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Genius Bar</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Today at Apple</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Gruppenreservierungen</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Sommer Camp</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Store App</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Zertifiziert Refurbished</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Trade In</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Finanzierung</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Bestellstatus</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Einkaufshilfe</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-white mb-2">Für Unternehmen</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Apple und Unternehmen</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Für Unternehmen einkaufen</a></li>
+</ul>
+<h4 class="font-semibold text-white mt-4 mb-2">Für den Bildungsbereich</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Apple und Bildung</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Für Hochschulen einkaufen</a></li>
+</ul>
+<h4 class="font-semibold text-white mt-4 mb-2">Für das Gesundheitswesen</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Apple und das Gesundheitswesen</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-white mb-2">Apple Werte</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Barrierefreiheit</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Bildung</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Nachhaltigkeit</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Datenschutz</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Innovationen in der Lieferkette</a></li>
+</ul>
+<h4 class="font-semibold text-white mt-4 mb-2">Über Apple</h4>
+<ul class="space-y-1.5">
+<li><a class="hover:underline hover:text-white" href="#">Newsroom</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Leadership Team</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Stellenangebote</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Garantie</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Investor:innen</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Ethik und Compliance</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Events</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Jobs schaffen in Europa</a></li>
+<li><a class="hover:underline hover:text-white" href="#">Apple Kontakt</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-6">
+<p class="mb-2">Weitere Einkaufsmöglichkeiten: <a class="text-[#0071e3] underline" href="#">Finde einen Apple Store</a> oder <a class="text-[#0071e3] underline" href="#">einen anderen Händler</a> in deiner Nähe. Oder ruf an unter <a class="text-[#0071e3] underline" href="#">0800 2000 136</a>.</p>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex flex-wrap gap-x-4 gap-y-2">
+<span>Copyright © 2024 Apple Inc. Alle Rechte vorbehalten.</span>
+<div class="flex flex-wrap gap-x-2">
+<a class="hover:underline hover:text-white border-r border-[#86868b] pr-2" href="#">Datenschutzrichtlinie</a>
+<a class="hover:underline hover:text-white border-r border-[#86868b] pr-2" href="#">Verwendung von Cookies</a>
+<a class="hover:underline hover:text-white border-r border-[#86868b] pr-2" href="#">Nutzungsbedingungen</a>
+<a class="hover:underline hover:text-white border-r border-[#86868b] pr-2" href="#">Verkauf und Rückerstattung</a>
+<a class="hover:underline hover:text-white border-r border-[#86868b] pr-2" href="#">Rechtliche Hinweise</a>
+<a class="hover:underline hover:text-white" href="#">Sitemap</a>
+</div>
+</div>
+<span class="whitespace-nowrap">Deutschland</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
